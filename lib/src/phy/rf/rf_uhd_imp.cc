@@ -633,9 +633,10 @@ static int uhd_init(rf_uhd_handler_t* handler, char* args, uint32_t nof_channels
 
   // Select same synchronization source only if more than one channel is opened
   std::string sync_src = "internal";
-  if (nof_channels > 1) {
-    sync_src = clock_src;
-  }
+  sync_src = clock_src;
+  // if (nof_channels > 1) {
+  //   sync_src = clock_src;
+  // }
 
   // Logging level
 #ifdef UHD_LOG_INFO
