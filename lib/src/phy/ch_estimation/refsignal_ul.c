@@ -225,6 +225,23 @@ void srsran_refsignal_dmrs_pusch_get(srsran_refsignal_ul_t* q,
   }
 }
 
+void srsran_pilot_target_rnti_get(srsran_refsignal_ul_t* q,
+                                     srsran_pusch_cfg_t*    pusch_cfg,
+                                     cf_t*                  sf_symbols,
+                                     cf_t*                  pilot)
+{
+  for (uint32_t ns_idx = 0; ns_idx < 2; ns_idx++) {
+    INFO("Getting pilot from n_prb: %d, L: %d, ns_idx: %d",
+         pusch_cfg->grant.n_prb_tilde[ns_idx],
+         pusch_cfg->grant.L_prb,
+         ns_idx);
+    uint32_t L = SRSRAN_REFSIGNAL_UL_L(ns_idx, q->cell.cp);
+    memcpy(pilot,
+           &sf_symbols[SRSRAN_RE_IDX(q->cell.nof_prb, L, pusch_cfg->grant.n_prb_tilde[ns_idx] * SRSRAN_NRE)],
+           pusch_cfg->grant.L_prb * SRSRAN_NRE * sizeof(cf_t));
+  }
+}
+
 /* Computes r sequence */
 static void compute_r(srsran_refsignal_ul_t*             q,
                       srsran_refsignal_dmrs_pusch_cfg_t* cfg,
