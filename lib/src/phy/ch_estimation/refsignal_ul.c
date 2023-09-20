@@ -236,7 +236,7 @@ void srsran_pilot_target_rnti_get(srsran_refsignal_ul_t* q,
          pusch_cfg->grant.L_prb,
          ns_idx);
     uint32_t L = SRSRAN_REFSIGNAL_UL_L(ns_idx, q->cell.cp);
-    memcpy(pilot,
+    memcpy(&pilot[ns_idx * SRSRAN_NRE * pusch_cfg->grant.L_prb],
            &sf_symbols[SRSRAN_RE_IDX(q->cell.nof_prb, L, pusch_cfg->grant.n_prb_tilde[ns_idx] * SRSRAN_NRE)],
            pusch_cfg->grant.L_prb * SRSRAN_NRE * sizeof(cf_t));
   }
