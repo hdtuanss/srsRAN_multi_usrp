@@ -122,4 +122,6 @@ SRSRAN_API int srsran_chest_ul_estimate_srs(srsran_chest_ul_t*                 q
                                             cf_t*                              input,
                                             srsran_chest_ul_res_t*             res);
 
+SRSRAN_API cf_t* allocate_single_pilot_vector(uint32_t max_prb);
+
 #endif // SRSRAN_CHEST_UL_H
