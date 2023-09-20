@@ -128,6 +128,12 @@ SRSRAN_API void srsran_refsignal_dmrs_pusch_get(srsran_refsignal_ul_t* q,
                                                 cf_t*                  sf_symbols,
                                                 cf_t*                  r_pusch);
 
+SRSRAN_API void srsran_pilot_target_rnti_get(srsran_refsignal_ul_t* q,
+                                                srsran_pusch_cfg_t*    pusch_cfg,
+                                                cf_t*                  sf_symbols,
+                                                cf_t*                  pilot);
+
+
 SRSRAN_API int srsran_refsignal_dmrs_pucch_gen(srsran_refsignal_ul_t* q,
                                                srsran_ul_sf_cfg_t*    sf,
                                                srsran_pucch_cfg_t*    cfg,
