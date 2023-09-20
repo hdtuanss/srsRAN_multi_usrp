@@ -109,6 +109,11 @@ clean_exit:
   return ret;
 }
 
+/*New function to allocate cf_t I/Q data*/
+cf_t* allocate_single_pilot_vector(uint32_t max_prb){
+  return srsran_vec_cf_malloc(MAX_REFS_SF + 1);
+}
+
 void srsran_chest_ul_free(srsran_chest_ul_t* q)
 {
   srsran_refsignal_dmrs_pusch_pregen_free(&q->dmrs_signal, &q->dmrs_pregen);
